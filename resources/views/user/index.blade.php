@@ -6,10 +6,10 @@
     <hr/>
     <table class="table table-striped">
       <thead>
-        <th>Название</th>
-        <th>Цена</th>
-        <th>Кол стр</th>
-        <th>Язык</th>
+        <th>Название<a href="{{route('index.sort', ['pages', 'desc'])}}"><i class="fas fa-angle-down"></i></a><a href="{{route('index.sort', ['pages', 'asc'])}}"><i class="fas fa-angle-up"></i></a></th>
+        <th><a href="{{route('index.sort', ['pages', 'desc'])}}"><i class="fas fa-angle-down"></i></a>Цена<a href="{{route('index.sort', ['pages', 'asc'])}}"><i class="fas fa-angle-up"></i></a></th>
+        <th><a href="{{route('index.sort', ['pages', 'desc'])}}"><i class="fas fa-angle-down"></i></a>Кол стр<a href="{{route('index.sort', ['pages', 'asc'])}}"><i class="fas fa-angle-up"></i></a></th>
+        <th><a href="{{route('index.sort', ['pages', 'desc'])}}"><i class="fas fa-angle-down"></i></a>Язык<a href="{{route('index.sort', ['pages', 'asc'])}}"><i class="fas fa-angle-up"></i></a></th>
         <th>Авторы</th>
         <th>Жанры</th>
       </thead>

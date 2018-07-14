@@ -11,10 +11,10 @@ uSE DB;
 class DashboardController extends Controller
 {
     //
-    public function viewAllBooks ()
+    public function viewAllBooks ($sort='id', $direction="asc")
     {
     	return view('user.index',[
-            'books' => Book::paginate(10)
+            'books' => Book::orderby($sort, $direction)->paginate(10)
         ]);
     }
 

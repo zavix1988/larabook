@@ -31,6 +31,7 @@ Route::group([
 		function()
 		{
 			Route::get('/', 'DashboardController@viewAllBooks')->name('index');
+			Route::get('/{sort}/{direction}', 'DashboardController@viewAllBooks')->name('index.sort');
 			Route::get('/{slug}', 'DashboardController@viewOneBook')->name('index.book');
 		});
 
