@@ -6,15 +6,16 @@ use Illuminate\Http\Request;
 use App\Book;
 use App\Author;
 use App\Genre;
-uSE DB;
+use DB;
 
 class DashboardController extends Controller
 {
     //
     public function viewAllBooks ($sort='id', $direction="asc")
     {
+        $books = Book::all();
     	return view('user.index',[
-            'books' => Book::orderby($sort, $direction)->paginate(10)
+           'books' => Book::orderBy($sort, $direction)->paginate(10)
         ]);
     }
 

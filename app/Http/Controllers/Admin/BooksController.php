@@ -53,7 +53,6 @@ class BooksController extends Controller
         //
 
         $book = Book::create($request->all());
-        //var_dump($request->all());
         if ($request->input('authors')) {
             $book->authors()->attach($request->input('authors'));
         }
