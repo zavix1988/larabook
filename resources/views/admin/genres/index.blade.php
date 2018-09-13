@@ -14,7 +14,7 @@
 				<tr>
 					<th>Название</th>
 					<th>Slug</th>
-					<th colspan="3">Действие</th>
+					<th colspan="3"><div class="float-right">Действие</div></th>
 
 				</tr>
 			</thead>

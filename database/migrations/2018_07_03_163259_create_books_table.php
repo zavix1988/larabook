@@ -18,6 +18,8 @@ class CreateBooksTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->integer('pages');
+            $table->integer('pubyear');
+            $table->text('description');
             $table->string('slug')->unique();
             $table->string('lang');
             $table->timestamps();

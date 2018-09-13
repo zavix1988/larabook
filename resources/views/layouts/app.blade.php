@@ -8,10 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Larabook') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -19,13 +23,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+
+
 </head>
-<body>
-    <div id="app">
+<body >
+    <div id="app" class="body">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Larabook') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -40,34 +47,40 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                            <li class="nav-item">
+                                <a href="{{route('index.callback')}}" class="nav-link">Обратная связь</a>
+                            </li>
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Вход') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                             </li>
                         @else
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">Админка</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{route('admin.index')}}">Admin</a>
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
-
                             </li>
-
                         @endguest
                     </ul>
                 </div>
@@ -78,5 +91,17 @@
             @yield('content')
         </main>
     </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="text-center center-block">
+          <p class="txt-railway">- © 2018 Copyright: Alex Zhukov -</p>
+          <a href="https://www.facebook.com/alex.zhookov"><i class="fab fa-facebook-square fa-3x"></i></a>
+          <a href="https://www.instagram.com/zavix1988/"><i class="fab fa-instagram fa-3x"></i></a>
+          <a href="https://linkedin.com/in/oleksiy-zhukov-745883119"><i class="fab fa-linkedin-in fa-3x"></i></a>
+          <a href="https://github.com/zavix1988/larabook"><i class="fab fa-github-square fa-3x"></i></a>
+          <a href="{{route('index.callback')}}"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+        </div>
+      </div>
+    </footer>
 </body>
 </html>

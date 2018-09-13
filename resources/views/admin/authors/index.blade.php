@@ -14,7 +14,7 @@
 				<tr>
 					<th>Название</th>
 					<th>Slug</th>
-					<th>Автор жив?</th>
+					<th>Год рождения</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -22,13 +22,7 @@
 					<tr>
 						<td>{{$author->name}}</td>
 						<td>{{$author->slug}}</td>
-						<td>
-							@if ($author->alive == 0)
-							    Умер
-							@else
-							    Жив
-							@endif
-						</td>
+						<td>{{$author->birthyear}}</td>
 						<td><a class="btn btn-secondary float-right" href="{{route('admin.authors.edit', $author)}}"><i class="fas fa-edit"></i>&nbsp;Редактировать</a></td>
 						<td class="float-right">
 							<form onsubmit="if(confirm('Удалить?')){return true}else{return false}" action="{{route('admin.authors.destroy', $author)}}" method="post">

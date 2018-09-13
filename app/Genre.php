@@ -14,7 +14,7 @@ class Genre extends Model
 		parent::boot();
 
 		static::saving(function($genre) {
-			$genre->slug = str_slug($genre->name);
+			$genre->slug = str_slug($genre->name.'-'.rand(1900, 2018));
 
 			return true;
 		});

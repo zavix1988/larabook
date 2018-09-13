@@ -26,23 +26,25 @@ Route::group([
 		Route::resource('/genres', 'GenresController', ['as' => 'admin']);
 
 	});
+//Callback routes
 
-	Route::group([],
-		function()
-		{
-			Route::get('/', 'DashboardController@viewAllBooks')->name('index');
-			Route::get('/{sort}/{direction}', 'DashboardController@viewAllBooks')->name('index.sort');
-			//Route::get('/books/{sort}/{direction}', 'DashboardController@booksByAuthor')->name('index.books');
-			Route::get('/{slug}', 'DashboardController@viewOneBook')->name('index.book');
-		});
+Route::group(['prefix' => 'callback'],
+	function(){
+		Route::get('/', 'CallbackController@all')->name('index.callback');
+		Route::post('/message', 'CallbackController@callBack')->name('callback.message');
+	}
+);
 
-// User routes
+//User routes
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::group([],
+	function()
+	{
+		Route::get('/', 'DashboardController@viewAllBooks')->name('index');
+		Route::get('/sort/{sort}/{direction}', 'DashboardController@viewAllBooks')->name('index.sort');
+		Route::get('/pricefilter', 'DashboardController@filterByPrice')->name('index.filter.price');
+		Route::get('/authorfilter', 'DashboardController@filterByAuthor')->name('index.filter.author');
+		Route::get('/genrefilter', 'DashboardController@filterByGenre')->name('index.filter.genre');
+		Route::get('/book/{slug}', 'DashboardController@viewOneBook')->name('index.book');
 
-
-
-
-//Route::get('/home', 'HomeController@index')->name('home');
+	});

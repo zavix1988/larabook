@@ -7,7 +7,7 @@
 			@slot('parent')Главная@endslot
 			@slot('active')Книги@endslot
 		@endcomponent
-		<form class="form" action="{{route('admin.books.update', $book)}}" method="POST">
+		<form class="form" action="{{route('admin.books.update', $book)}}" method="POST" enctype="multipart/form-data">
 			{{ method_field('PUT') }}
 			{{csrf_field()}}
 			@include('admin.books.partials.form')

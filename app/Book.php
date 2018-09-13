@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-	protected $fillable = ['name', 'price', 'pages', 'slug', 'lang', 'created_at', 'updated_at'];
+	protected $fillable = ['name', 'price', 'pages', 'pubyear', 'description', 'slug', 'lang', 'created_at', 'updated_at'];
     //
 
     public static function boot()
@@ -15,8 +15,7 @@ class Book extends Model
         parent::boot();
 
         static::saving(function($book) {
-            $book->slug = str_slug($book->name);
-
+            $book->slug = str_slug($book->name.'-'.rand(1900, 2018));
             return true;
         });
     }

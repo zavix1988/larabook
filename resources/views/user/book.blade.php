@@ -1,4 +1,4 @@
-@extends('user.layouts.app_user')
+@extends('layouts.app')
 
 @section('content')
 	<div class="container">
@@ -10,12 +10,14 @@
 	<hr/>
 	<table class="table table-striped">
 			<thead>
-				<th>Название</th>
-				<th>Цена</th>
-				<th>Кол стр</th>
-				<th>Язык</th>
-				<th>Авторы</th>
-				<th>Жанры</th>
+				<tr>
+					<th>Название</th>
+					<th>Цена</th>
+					<th>Кол стр</th>
+					<th>Язык</th>
+					<th>Авторы</th>
+					<th>Жанры</th>
+				</tr>
 			</thead>
 			<tbody>
 				<tr>
@@ -34,9 +36,10 @@
 						@endforeach
 					</td>
 				</tr>
+				<tr>
+					<td colspan="6">{{$book->description}}</td>
+				</tr>
 			</tbody>
-
-
 		</table>
 	</div>
 @endsection

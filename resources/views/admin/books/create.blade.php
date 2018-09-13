@@ -8,7 +8,7 @@
 			@slot('active')Книги@endslot
 		@endcomponent
 		<hr/>
-		<form class="form" action="{{route('admin.books.store')}}" method="POST">
+		<form class="form" action="{{route('admin.books.store')}}" method="POST" enctype="multipart/form-data">
 			{{csrf_field()}}
 			@include('admin.books.partials.form')
 		</form>

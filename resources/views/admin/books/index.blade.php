@@ -16,7 +16,7 @@
 				<th>Название</th>
 				<th>Цена</th>
 				<th>Кол стр</th>
-				<th>Slug</th>
+				<th>Дата публикации</th>
 				<th>Язык</th>
 			</thead>
 			<tbody>
@@ -25,7 +25,7 @@
 					<td>{{$book->name}}</td>
 					<td>{{$book->price}}</td>
 					<td>{{$book->pages}}</td>
-					<td>{{$book->slug}}</td>
+					<td>{{$book->pubyear}}</td>
 					<td>{{$book->lang}}</td>
 					<td><a class="btn btn-secondary float-right" href="{{route('admin.books.edit', $book)}}"><i class="fas fa-edit"></i>&nbsp;Редактировать</a></td>
 					<td class="float-right">
@@ -45,13 +45,13 @@
 				@endforelse
 			</tbody>
 			<tfoot>
-			<tr>
-				<td colspan="3">
-				<ul class="pagination pull-right">
-					{{$books->links()}}
-				</ul>
-				</td>
-			</tr>
+				<tr>
+					<td colspan="3">
+						<ul class="pagination float-right">
+							{{$books->links()}}
+						</ul>
+					</td>
+				</tr>
 			</tfoot>
 
 		</table>
