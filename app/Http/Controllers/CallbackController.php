@@ -10,12 +10,23 @@ use Zttp\Zttp;
 
 class CallbackController extends Controller
 {
-	//
+
+	/**
+	 * Вывод формы отправки письма
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
 	public function all()
 	{
  		return view('user.callback.index');
 	}
 
+	/**
+	 * Проверка каптчи и отправка письма
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
 	public function callBack(Request $request)
 	{
 
@@ -26,7 +37,7 @@ class CallbackController extends Controller
 		$msg = $request->msg;
 
 	
-				/* Отправка запроса на проверку каптчи */
+		/* Отправка запроса на проверку каптчи */
 		$response = Zttp::asFormParams()->post('https://www.google.com/recaptcha/api/siteverify', [
 			'secret' => config('captcha.captcha.secret'),
 			'response' => request('g-recaptcha-response'),

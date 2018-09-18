@@ -10,59 +10,42 @@ use DB;
 
 class DashboardController extends Controller
 {
-    //
-
+    /**
+     * Вывод всех книг с возможной сортировкой 
+     *
+     * @param  $sort - параметр сортировки
+     * @param  $direction - направление сортировки
+     * @return \Illuminate\Http\Response
+     */
     public function viewAllBooks ($sort='id', $direction="asc")
     {
       $max = DB::table('books')->max('price');
-      if($sort=='authors' && $direction=='asc'){
-          return view('user.index', [
-              'max' => $max,
-              'books' => Book::with(['authors' => function($query){
-                $query->orderby('name','asc');
-              }])->paginate(10)
-            ]);
-        }elseif($sort=='authors' && $direction=='desc'){
-            return view('user.index', [
-              'max' => $max,
-              'books' => Book::with(['authors' => function($query){
-                $query->orderby('name','desc');
-              }])->paginate(10)
-            ]);
-          }elseif($sort=='genres' && $direction=='asc'){
-              return view('user.index', [
-                'max' => $max,
-                'books' => Book::with(['genres' => function($query){
-                  $query->orderby('name','asc');
-                }])->paginate(10)
-              ]);
-            }elseif($sort=='genres' && $direction=='desc'){
-                return view('user.index', [
-                  'max' => $max,
-                  'books' => Book::with(['genres' => function($query){
-                    $query->orderby('name','desc');
-                  }])->paginate(10)
-                ]);
-              }else{
-          return view('user.index',[
-              'max' => $max,
-              'books' => Book::orderBy($sort, $direction)->paginate(10)
-            ]);
-        }
-
+      return view('user.index',[
+        'max' => $max,
+        'books' => Book::orderBy($sort, $direction)->paginate(10)
+      ]);
     }
 
+    /**
+     * Вывод конкрктной книги 
+     *
+     * @param  $slug
+     * @return \Illuminate\Http\Response
+     */
     public function viewOneBook($slug)
     {
-    	   // Get post for slug.
-    $book = Book::whereSlug($slug)->firstOrFail();
-
-    return view('user.book', [
+      $book = Book::whereSlug($slug)->firstOrFail();
+      return view('user.book', [
         'book' => $book
-
         ]);
     }
 
+    /**
+     * Фильтрация по авторам
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function filterByAuthor(Request $request)
     {
       $author = $request->input('author');
@@ -73,6 +56,12 @@ class DashboardController extends Controller
       ]);
     }
 
+    /**
+     * Фильтрация по жанрам
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function filterByGenre(Request $request)
     {
       $genre = $request->input('genre');
@@ -83,9 +72,15 @@ class DashboardController extends Controller
       ]);
     }
 
+    /**
+     * Фильтрация по цене и языку
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function filterByPrice(Request $request)
     {
-
+      // защита от дурака
       $min = (int)($request->input('min'))*1;
       $max = (int)($request->input('max'))*1;
       switch ($request->input('lang')) {
@@ -93,6 +88,7 @@ class DashboardController extends Controller
         case 'ENG': $lang = 'ENG'; break;
         default: $lang = 'RUS'; break;
       }
+      // проверка на наличие данных из формы
       if($max !== 0)
       {
         session([
@@ -102,6 +98,7 @@ class DashboardController extends Controller
         ]);        
       }
 
+      // проверка на пагинацию
       if(null !== $request->input('page'))
       {
         return view('user.index',[
@@ -114,8 +111,6 @@ class DashboardController extends Controller
          'books' => Book::whereBetween('price', [$min, $max])->where('lang', '=', $lang)->paginate(10)
         ]);
       }
-
-
     }
 
 }

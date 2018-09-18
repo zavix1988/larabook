@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class AuthorsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Вывод всех авторов
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,7 +22,7 @@ class AuthorsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Вывод формы создания нового автора
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,7 +35,7 @@ class AuthorsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Запись нового автора в базу
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -49,7 +49,7 @@ class AuthorsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource
      *
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
@@ -60,7 +60,7 @@ class AuthorsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Вывод формы редактирования автора
      *
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response
@@ -76,7 +76,7 @@ class AuthorsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Запись изменения автора в базу 
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Author  $author
@@ -90,7 +90,7 @@ class AuthorsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Удаление автора из базы
      *
      * @param  \App\Author  $author
      * @return \Illuminate\Http\Response

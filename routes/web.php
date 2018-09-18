@@ -11,7 +11,8 @@
 |
 */
 
-//Administration routes
+// Администраторские маршруты
+
 Auth::routes();
 
 Route::group([
@@ -26,7 +27,8 @@ Route::group([
 		Route::resource('/genres', 'GenresController', ['as' => 'admin']);
 
 	});
-//Callback routes
+
+// Маршруты для обратной связи
 
 Route::group(['prefix' => 'callback'],
 	function(){
@@ -35,7 +37,7 @@ Route::group(['prefix' => 'callback'],
 	}
 );
 
-//User routes
+// Маршруты для незарегистрированых пользователей
 
 Route::group([],
 	function()

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class GenresController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Вывод всех жанров
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,7 +22,7 @@ class GenresController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Вывод формы создания нового жанра
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,7 +35,7 @@ class GenresController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Запись нового жанра в базу
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -60,7 +60,7 @@ class GenresController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Вывод формы редактирования жанра
      *
      * @param  \App\Genre  $genre
      * @return \Illuminate\Http\Response
@@ -74,7 +74,7 @@ class GenresController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Запись изменения жанра в базу 
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Genre  $genre
@@ -88,7 +88,7 @@ class GenresController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Удаление жанра из базы
      *
      * @param  \App\Genre  $genre
      * @return \Illuminate\Http\Response

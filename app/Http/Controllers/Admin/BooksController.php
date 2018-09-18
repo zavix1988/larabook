@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 class BooksController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Вывод всех книг
      *
      * @return \Illuminate\Http\Response
      */
@@ -24,7 +24,7 @@ class BooksController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Вывод формы для создания новой книги
      *
      * @return \Illuminate\Http\Response
      */
@@ -43,7 +43,7 @@ class BooksController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Запись новой книги со связями в базу
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -74,7 +74,7 @@ class BooksController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Вывод формы для редактирования книги
      *
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
@@ -93,7 +93,7 @@ class BooksController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Запись отредактированной книги со связями в базу
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Book  $book
@@ -115,7 +115,7 @@ class BooksController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Удаление книги со связями из базы
      *
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response

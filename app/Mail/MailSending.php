@@ -17,7 +17,7 @@ class MailSending extends Mailable
     protected $msg;
 
     /**
-     * Create a new message instance.
+     * Создание нового письма
      *
      * @return void
      */
@@ -30,7 +30,7 @@ class MailSending extends Mailable
     }
 
     /**
-     * Build the message.
+     * Формирование письма
      *
      * @return $this
      */
